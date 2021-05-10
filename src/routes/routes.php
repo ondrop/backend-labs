@@ -26,6 +26,6 @@ Router::add('/api/tasks', function() {
     (new TaskApiController())->index();
 });
 
-Router::add('/api/tasks/(?P<id>[0-9]+)', function() {
-    echo 'test1';
+Router::add('/api/tasks/(?P<id>[0-9]+)', function(int $id) {
+    (new TaskApiController())->taskAction($id);
 });

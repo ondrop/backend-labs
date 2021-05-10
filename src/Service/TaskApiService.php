@@ -26,9 +26,9 @@ class TaskApiService
             $errors[] = 'Описание не может быть пустым';
         }
 
-        if (isset($_POST['date_start']) && !empty(trim($_POST['date_start']))) {
+        if (isset($_POST['dateStart']) && !empty(trim($_POST['dateStart']))) {
             try {
-                $dateTime = new \DateTime(trim($_POST['date_start']));
+                $dateTime = new \DateTime(trim($_POST['dateStart']));
                 $parameters['dateStart'] = $dateTime->format('Y-m-d H:i:s');
             } catch(\Exception $e) {
                 $errors[] = 'Некорректная дата. Валидный формат YYYY-MM-DD hh:ii';
@@ -38,9 +38,9 @@ class TaskApiService
             $errors[] = 'Дата начала задачи не может быть пустым';
         }
 
-        if (isset($_POST['date_end']) && !empty(trim($_POST['date_end']))) {
+        if (isset($_POST['dateEnd']) && !empty(trim($_POST['dateEnd']))) {
             try {
-                $dateTime = new \DateTime(trim($_POST['date_end']));
+                $dateTime = new \DateTime(trim($_POST['dateEnd']));
                 $parameters['dateEnd'] = $dateTime->format('Y-m-d H:i:s');
             } catch(\Exception $e) {
                 $errors[] = 'Некорректная дата. Валидный формат YYYY-MM-DD hh:ii';
@@ -71,10 +71,5 @@ class TaskApiService
         } else {
             return [$errors, false];
         }
-    }
-
-    public function getAll()
-    {
-        return $this->taskRepository->getAll();
     }
 }

@@ -143,7 +143,7 @@ class TaskRepository
     ";
 
         $STH = $this->conn->prepare($sql);
-        $STH->execute();
+        return $STH->execute();
     }
 
     public function addTask(array $parameters)
@@ -151,6 +151,22 @@ class TaskRepository
         $sql = "
         INSERT INTO todo(description, date_start, date_end, id_priorety)
         VALUES(:description, :dateStart, :dateEnd, :priorety)
+    ";
+
+        $STH = $this->conn->prepare($sql);
+        return $STH->execute($parameters);
+    }
+
+    public function updateTaskApi(array $parameters)
+    {
+        $sql = "
+        UPDATE todo AS t
+        SET 
+            t.description = :description, 
+            t.date_start = :dateStart,
+            t.date_end = :dateEnd,
+            t.id_priorety = (SELECT id_priorety FROM priorety WHERE `value` = :priorety)
+        WHERE t.id_task = :idTask
     ";
 
         $STH = $this->conn->prepare($sql);
