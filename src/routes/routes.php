@@ -8,10 +8,6 @@ Router::add('/', function() {
     (new TaskController())->index();
 });
 
-Router::add('/index.php', function() {
-    (new TaskController())->index();
-});
-
 Router::add('/add_task', function() {
     (new TaskController())->add();
 });

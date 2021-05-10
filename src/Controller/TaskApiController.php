@@ -107,6 +107,6 @@ class TaskApiController
     private function apiNotFound()
     {
         http_response_code(404);
-        return include './src/templates/404page.html';
+        return include_once PAGE_404;
     }
 }

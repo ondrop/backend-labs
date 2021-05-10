@@ -85,7 +85,7 @@ class TaskController
             'startLimit' => $this->startLimit,
             'limit' => $this->limit,
         ]);
-        require_once './src/templates/tasks.php';
+        require_once APP_PATH . '/templates/task/tasks.php';
     }
 
     public function add()
@@ -131,7 +131,7 @@ class TaskController
             'errors' => $errors ?? null
         ]);
 
-        require_once './src/templates/add_task.php';
+        require_once APP_PATH . '/templates/task/add_task.php';
     }
 
     public function edit()
@@ -180,7 +180,7 @@ class TaskController
         $taskData = $this->taskRepository->getTask($_GET['id'] ?? '', '%Y-%m-%dT%H%:%i');
         if (!$taskData) {
             http_response_code(404);
-            include './src/templates/404page.html';
+            include PAGE_404;
             return;
         }
 
@@ -190,6 +190,6 @@ class TaskController
             'errors' => $errors ?? null
         ]);
 
-        require_once './src/templates/edit_task.php';
+        require_once APP_PATH . '/templates/task/edit_task.php';
     }
 }

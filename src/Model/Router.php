@@ -24,6 +24,6 @@ class Router
         }
 
         http_response_code(404);
-        return include './src/templates/404page.html';
+        return include PAGE_404;
     }
 }
